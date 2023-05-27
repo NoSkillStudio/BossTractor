@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movement;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
-
     private void Update()
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
