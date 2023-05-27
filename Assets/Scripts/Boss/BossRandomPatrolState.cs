@@ -30,19 +30,20 @@ public class BossRandomPatrolState : BossBaseState
             else spriteRenderer.flipX = true;
 
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
+            if (Vector2.Distance(transform.position, playerPosition.position) < minimumDistance)
+            {
+                //transform.position = Vector2.MoveTowards(transform.position, targetPosition, -speed * Time.fixedDeltaTime);
+                //isMoving = false;
+                ChangeTarget();
+                Debug.Log("pl");
+            }
 
-
-            if (Vector2.Distance(transform.position, playerPosition.position) < stopDistance)
+            if (Vector2.Distance(transform.position, targetPosition) < stopDistance)
             {
                 isMoving = false;
                 Invoke("ChangeTarget", 1f);
             }
 
-            if (Vector2.Distance(transform.position, targetPosition) < minimumDistance)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, targetPosition, -speed * Time.fixedDeltaTime);
-                ChangeTarget();
-            }
         }
     }
     public override void EnterState(BossStateManager boss)

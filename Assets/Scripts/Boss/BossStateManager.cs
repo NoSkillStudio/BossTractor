@@ -6,7 +6,8 @@ using UnityEngine;
 public class BossStateManager : MonoBehaviour
 {
     BossBaseState currentState;
-    public BossRandomPatrolState RandomPatrolState;
+    [SerializeField] private BossRandomPatrolState RandomPatrolState;
+    [SerializeField] private BossRamState RamState;
     private void Start()
     {
         currentState = RandomPatrolState;
@@ -16,6 +17,15 @@ public class BossStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            SwitchState(RandomPatrolState);
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            SwitchState(RamState);
+        }
     }
 
     public void SwitchState(BossBaseState state)

@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 1048779624}
   - component: {fileID: 1048779623}
   - component: {fileID: 1048779626}
+  - component: {fileID: 1048779628}
   - component: {fileID: 1048779627}
   m_Layer: 0
   m_Name: Boss
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RandomPatrolState: {fileID: 1048779626}
+  RamState: {fileID: 1048779628}
 --- !u!212 &1048779624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -327,9 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53163dfdccf3ac14e999180013f99fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
   stopDistance: 0.1
-  minimumDistance: 0.1
+  minimumDistance: 2
   playerPosition: {fileID: 1877528553}
 --- !u!61 &1048779627
 BoxCollider2D:
@@ -376,6 +378,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1048779628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048779622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3f2ab26bab77441a87981dcc463439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 1877528553}
+  speed: 1
 --- !u!1 &1877528549
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ca50b34b64e2242b23cfdb0b8ff795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 3
   _rigidbody2D: {fileID: 1877528551}
 --- !u!50 &1877528551
 Rigidbody2D:
