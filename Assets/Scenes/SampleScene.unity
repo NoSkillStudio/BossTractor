@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 1048779623}
   - component: {fileID: 1048779626}
   - component: {fileID: 1048779628}
+  - component: {fileID: 1048779629}
   - component: {fileID: 1048779627}
   m_Layer: 0
   m_Name: Boss
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RandomPatrolState: {fileID: 1048779626}
   RamState: {fileID: 1048779628}
+  FollowState: {fileID: 1048779629}
 --- !u!212 &1048779624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -392,6 +394,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 1877528553}
   speed: 1
+--- !u!114 &1048779629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048779622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a85554202d47f04197a87cae2273bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 1877528553}
+  speed: 0.2
 --- !u!1 &1877528549
 GameObject:
   m_ObjectHideFlags: 0

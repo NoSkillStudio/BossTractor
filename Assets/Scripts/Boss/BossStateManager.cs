@@ -8,6 +8,7 @@ public class BossStateManager : MonoBehaviour
     BossBaseState currentState;
     [SerializeField] private BossRandomPatrolState RandomPatrolState;
     [SerializeField] private BossRamState RamState;
+    [SerializeField] private BossFollowState FollowState;
     private void Start()
     {
         currentState = RandomPatrolState;
@@ -25,6 +26,10 @@ public class BossStateManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha2))
         {
             SwitchState(RamState);
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            SwitchState(FollowState);
         }
     }
 
