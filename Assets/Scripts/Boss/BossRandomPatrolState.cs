@@ -1,23 +1,18 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class BossRandomPatrolState : BossBaseState
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private float stopDistance = 0.1f;
     [SerializeField] private float minimumDistance = 0.1f;
-
+    [SerializeField] private Transform _player;
     private bool isMoving = true;
     private Vector3 targetPosition;
-    [SerializeField] private Transform playerPosition;
-
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         ChangeTarget();
     }
 
@@ -30,22 +25,21 @@ public class BossRandomPatrolState : BossBaseState
             else spriteRenderer.flipX = true;
 
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
-            if (Vector2.Distance(transform.position, playerPosition.position) < minimumDistance)
+            if (Vector2.Distance(transform.position, _player.position) <= minimumDistance)
             {
                 //transform.position = Vector2.MoveTowards(transform.position, targetPosition, -speed * Time.fixedDeltaTime);
                 //isMoving = false;
                 ChangeTarget();
-                Debug.Log("pl");
             }
 
             if (Vector2.Distance(transform.position, targetPosition) < stopDistance)
             {
                 isMoving = false;
-                Invoke("ChangeTarget", 1f);
+                Invoke(nameof(ChangeTarget), 1f);
             }
-
         }
     }
+
     public override void EnterState(BossStateManager boss)
     {
         StartMove();
@@ -55,15 +49,18 @@ public class BossRandomPatrolState : BossBaseState
     {
         Move();
     }
-    public override void OnCollisionEnter2D(Collision2D boss)
+
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
 
     }
+
     public void ChangeTarget()
     {
         targetPosition = new Vector3(Random.Range(-6f, 6f), Random.Range(-3f, 3f), 0);
         isMoving = true;
     }
+
     public void StopMove()
     {
         targetPosition = transform.position;
@@ -74,5 +71,4 @@ public class BossRandomPatrolState : BossBaseState
     {
         isMoving = true;
     }
-
 }

@@ -1,31 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class BossRamState : BossBaseState
 {
-	[SerializeField] private Transform playerPosition;
-    private Vector3 targetPosition;
-    [SerializeField] private float speed = 1f;
-    private SpriteRenderer spriteRenderer;
-    public override void EnterState(BossStateManager boss)
+	[SerializeField] private float speed = 1f;
+	private Transform _player;
+	private SpriteRenderer spriteRenderer;
+
+	public override void EnterState(BossStateManager boss)
 	{
-		//TODO: анимация обнаружения
-		targetPosition = playerPosition.position;
+		//TODO: Р°РЅРёРјР°С†РёСЏ РѕР±РЅР°СЂСѓР¶РµРЅРёСЏ
+		_player = FindObjectOfType<PlayerController>().transform;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	public override void UpdateState(BossStateManager boss)
 	{
-        if (playerPosition.position.x >= transform.position.x)
-            spriteRenderer.flipX = false;
-        else spriteRenderer.flipX = true;
+		Vector2 targetPosition = _player.position;
+		if (targetPosition.x >= transform.position.x)
+			spriteRenderer.flipX = false;
+		else spriteRenderer.flipX = true;
 
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
-    }
+		transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
+	}
 
-	public override void OnCollisionEnter2D(Collision2D boss)
+	public override void OnCollisionEnter2D(Collision2D collision)
 	{
-		
+
 	}
 }
