@@ -68,8 +68,8 @@ public class Gun : WeaponBase
     }
 
     private void ActiveShoot() => canShoot = true;
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawCube(raftPosition, attackSize);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.DrawCube(raftPosition, attackSize);
+    //}
 }
