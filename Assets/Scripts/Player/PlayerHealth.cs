@@ -5,9 +5,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
 	[SerializeField] private Image _healthBar;
-	[Range(1, 20)]
-	[SerializeField]
-	private int _maxHealth;
+    [SerializeField] private int _maxHealth;
 	private int _health;
 	private bool _alive = true;
 
